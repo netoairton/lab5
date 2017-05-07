@@ -21,7 +21,10 @@ class Empresa{
     void setNome(string n);
     string getCnpj();
     void setCnpj(string c);
+    int getQtd();
+    void setQtd(int q);
     Funcionario *getFuncionarios();
+    void setFuncionarios(Funcionario *f);
     friend istream& operator>>(istream& is, Empresa &emp);
     
 };
