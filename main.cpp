@@ -6,12 +6,17 @@ using std::endl;
 #include<string>
 using std::string;
 
+#include<fstream>
+using std::ifstream;
+using std::ofstream;
+
 #include"empresa.h"
 #include"funcionario.h"
 
 int main(){
     int Qempresas;
     int opcao; //opcao de impressao ou adicao...
+    string entry;
     cout<<"Deseja adicionar empresas? (0)Nao (1)Sim: ";
     cin>>opcao;
     if(opcao==1){
@@ -23,18 +28,33 @@ int main(){
             cout<<" Nome da empresa "<<i+1<<" : ";
             cin>>emp[i];
             Funcionario *funcionarios= new Funcionario[emp[i].getQtd()];
-            for(int j=0; j<emp[i].getQtd(); j++){
-                cout<<"     Nome do funcionario "<<j+1<<" : ";
-                cin>>funcionarios[j];
-            }
-            cout<<"Deseja imprimir os funcionários desta empresa? (3)Nao (4)Sim: ";
-            cin>>opcao;
-            if(opcao==4){
-                for(int j=0; j<emp[i].getQtd(); j++){
-                    cout<<funcionarios[j];
+            if(emp[i].getQtd() > 0){
+
+                cout<<"Digite o arquivo de entrada: ";
+                cin >> entry;
+
+                ifstream entrada(entry);
+                if(!entrada){
+                    cout<<"O arquivo de entrada nao pode ser aberto."<<endl;
+                    return 0;
                 }
+                string null;
+                getline(entrada, null);
+                for(int j=0; j<emp[i].getQtd(); j++){
+                    entrada>>funcionarios[j];
+                }
+
+                cout<<"Deseja imprimir os funcionarios desta empresa? (3)Nao (4)Sim: ";
+                cin>>opcao;
+                if(opcao==4){
+                    for(int j=0; j<emp[i].getQtd(); j++){
+                        cout<<funcionarios[j];
+                    }
+                }
+                opcao=0;
+                entry="";
+                entrada.close();
             }
-            opcao=0;
         }
     }
     else {

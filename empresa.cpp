@@ -42,7 +42,7 @@ istream& operator>>(istream& is, Empresa &emp) {
 	is >> emp.nome;
     cout<<" Digite o CNPJ: ";
     is >> emp.CNPJ;
-    cout<<" Digite a quantidade de funcionáros: ";
+    cout<<" Digite a quantidade de funcionaros (0)Nao adicionar: ";
     is >> emp.qtd;
 	return is;
 }
