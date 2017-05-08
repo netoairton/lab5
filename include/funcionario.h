@@ -3,6 +3,7 @@
 
 #include<string>
 using std::string;
+#include <iostream>
 #include <istream>
 using std::istream;
 #include <ostream>
@@ -27,6 +28,7 @@ class Funcionario{
         void setDatames(string dm);
         string getDataano();
         void setDataano(string da);
+        //friend void aumentar(float a);
         friend istream& operator>>(istream& is, Funcionario &funcionarios);
         friend ostream& operator<<(ostream& os, Funcionario &funcionarios);
 };

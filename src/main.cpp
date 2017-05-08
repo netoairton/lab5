@@ -17,6 +17,8 @@ int main(){
     int Qempresas;
     int opcao; //opcao de impressao ou adicao...
     string entry;
+    string out;
+    //float aumento;
     cout<<"Deseja adicionar empresas? (0)Nao (1)Sim: ";
     cin>>opcao;
     if(opcao==1){
@@ -38,20 +40,46 @@ int main(){
                     cout<<"O arquivo de entrada nao pode ser aberto."<<endl;
                     return 0;
                 }
+
                 string null;
-                getline(entrada, null);
+                getline(entrada, null); //descartando o cabeçalho
+
                 for(int j=0; j<emp[i].getQtd(); j++){
                     entrada>>funcionarios[j];
                 }
 
-                cout<<"Deseja imprimir os funcionarios desta empresa? (3)Nao (4)Sim: ";
+                cout<<"Deseja imprimir os funcionarios desta empresa? (4)Nao (5)Sim: ";
                 cin>>opcao;
-                if(opcao==4){
+                if(opcao==5){
                     for(int j=0; j<emp[i].getQtd(); j++){
                         cout<<funcionarios[j];
                     }
                 }
                 opcao=0;
+
+                /*cout<<"Deseja dar aumento aos funcionários? (2)Nao (3)Sim: ";
+                cin>>opcao;
+                if(opcao==3){
+                    cout<<"De quantas vezes deseja o aumento? (ex: 3.5 vezes) : ";
+                    cin>>aumento;
+                    for(int j=0; j<emp[i].getQtd(); j++){
+                        funcionarios[j].aumentar(aumento);
+                    }
+                    opcao=0;
+                }*/     //Não está funcionando
+                /*else{*/
+                    cout<<"Deseja gravar os dados em um arquivo? (8)Nao (9)Sim: ";
+                    cin>>opcao;
+                    if(opcao==9){
+                        cout<<"Digite o nome do arquivo: ";
+                        cin>>out;
+                        ofstream saida(out, std::ios::app);
+                        for(int j=0; j<emp[i].getQtd(); j++){
+                            saida<<funcionarios[j];
+                        }
+                    }
+                //}
+
                 entry="";
                 entrada.close();
             }

@@ -1,5 +1,6 @@
 #include<iostream>
 using std::cout;
+using std::cin;
 using std::endl;
 #include"funcionario.h"
 #include"empresa.h"
@@ -10,6 +11,8 @@ using std::ofstream;
 using std::istream;
 #include <ostream>
 using std::ostream;
+#include <string>
+using std::string;
 Funcionario::Funcionario() {
     name = "";
     salario = "";
@@ -47,6 +50,33 @@ string Funcionario::getDataano(){
 void Funcionario::setDataano(string da){
     dataano=da;
 }
+
+/*void aumentar(float a){
+    float valor=0;
+    int op;
+    string out;
+    //valor= stof (funcionarios.salario);
+    valor= valor*a;
+    cout<<"Aumento dado com sucesso"<<endl;
+    cout<<"Deseja gravar esse funcionario em um arquivo? (8)Nao (9)Sim: ";
+    cin>>op;
+    if(op==9){
+        cout<<"Digite o nome do arquivo: ";
+        cin>>out;
+        ofstream saida(out, std::ios::app);
+        saida<<funcionarios.name;
+        saida<<";";
+        saida<<funcionarios.salario;
+        saida<<";";
+        saida<<funcionarios.datadia;
+        saida<<"/";
+        saida<<funcionarios.datames;
+        saida<<"/";
+        saida<<funcionarios.dataano;
+        saida<<endl;
+        saida.close();
+    }
+}*/
 istream& operator>>(istream& is, Funcionario &funcionarios) {
 	//is >> funcionarios.name;
     getline(is, funcionarios.name, ';');
